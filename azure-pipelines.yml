@@ -13,13 +13,13 @@ jobs:
         imageName: 'ubuntu-16.04'
         python.version: '3.6'
       Python36Mac:
-        imageName: 'macos-10.13'
+        imageName: 'macos-10.14'
         python.version: '3.6'
       Python37Linux:
         imageName: 'ubuntu-16.04'
         python.version: '3.7'
       Python37Mac:
-        imageName: 'macos-10.13'
+        imageName: 'macos-10.14'
         python.version: '3.7'
     maxParallel: 4
   pool:
@@ -34,7 +34,6 @@ jobs:
   - script: |
       python -m pip install --upgrade pip wheel
       pip install -r requirements.txt
-      python -m spacy download en
     displayName: 'Install dependencies'
 
   - script: python setup.py sdist
@@ -43,5 +42,5 @@ jobs:
   - script: pip install dist/*.tar.gz
     displayName: 'Install from sdist'
 
-  - script: python -m pytest tests --cov=spacy_pytorch_transformers
+  - script: python -m pytest spacy_transformers --cov=spacy_transformers
     displayName: 'Run tests'
